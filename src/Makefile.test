@@ -1,0 +1,11 @@
+CC = gcc
+CFLAGS = -Wall -g $(shell pkg-config --cflags lldpctl)
+LDFLAGS = $(shell pkg-config --libs lldpctl)
+
+all: test_lldp_neighbors
+
+test_lldp_neighbors: test_lldp_neighbors.c
+	$(CC) $(CFLAGS) -o $@ $< $(LDFLAGS)
+
+clean:
+	rm -f test_lldp_neighbors 
